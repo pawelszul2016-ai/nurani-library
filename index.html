@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nurani Faith Library</title>
+
+  <style>
+    :root{
+      --bg:#f6f1e8;
+      --ink:#111;
+      --card:#fff;
+      --line:rgba(0,0,0,.12);
+    }
+    body{
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      text-align:center;
+      margin:0;
+      background:var(--bg);
+      color:var(--ink);
+    }
+    header{
+      padding: 34px 16px 10px;
+    }
+    .emblems{
+      display:flex;
+      gap:18px;
+      justify-content:center;
+      align-items:center;
+      flex-wrap:wrap;
+      margin-bottom: 18px;
+    }
+    .emblem{
+      width:180px;
+      max-width:42vw;
+    }
+    h1{
+      margin: 6px 0 4px;
+      font-size: 32px;
+      letter-spacing: .3px;
+    }
+    p.sub{
+      margin: 0 0 18px;
+      opacity: .85;
+    }
+
+    .wrap{
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 16px 40px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    @media (min-width: 840px){
+      .grid{
+        grid-template-columns: 360px 1fr;
+        align-items:start;
+      }
+    }
+
+    .panel{
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px;
+      box-shadow: 0 10px 24px rgba(0,0,0,.06);
+    }
+
+    .books{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+
+    button.book{
+      appearance:none;
+      border:1px solid var(--line);
+      background:#fff;
+      border-radius: 12px;
+      padding: 12px 12px;
+      font-size: 16px;
+      cursor:pointer;
+      text-align:left;
+      transition: transform .04s ease, border-color .15s ease, box-shadow .15s ease;
+    }
+    button.book:hover{
+      border-color: rgba(0,0,0,.25);
+      box-shadow: 0 8px 20px rgba(0,0,0,.08);
+    }
+    button.book:active{
+      transform: translateY(1px);
+    }
+    .small{
+      display:block;
+      font-size: 12px;
+      opacity:.75;
+      margin-top: 4px;
+    }
+
+    .viewerHeader{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+      margin-bottom: 10px;
+      flex-wrap:wrap;
+    }
+    .viewerTitle{
+      font-weight:700;
+      font-size:16px;
+    }
+    .hint{
+      font-size:12px;
+      opacity:.75;
+    }
+
+    iframe{
+      width:100%;
+      height: 78vh;
+      min-height: 520px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background:#fff;
+    }
+
+    .footer{
+      margin-top: 18px;
+      font-size: 12px;
+      opacity:.7;
+    }
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="emblems">
+
+    <!-- HAYKAL (5-ramienna gwiazda) w kole -->
+    <svg class="emblem" viewBox="0 0 200 200" aria-label="Haykal emblem">
+      <circle cx="100" cy="100" r="90" stroke="black" stroke-width="4" fill="none"/>
+      <!-- 5-point star (geometry-based) -->
+      <polygon
+        points="
+          100,18
+          122.9,68.5
+          178.8,74.7
+          136.4,112.9
+          147.6,168.3
+          100,141.6
+          52.4,168.3
+          63.6,112.9
+          21.2,74.7
+          77.1,68.5
+        "
+        fill="black"
+      />
+    </svg>
+
+    <!-- KOŁO + ARABSKI NAPIS -->
+    <svg class="emblem" viewBox="0 0 200 200" aria-label="Nurani in Arabic">
+      <circle cx="100" cy="100" r="90" stroke="black" stroke-width="4" fill="none"/>
+      <text x="100" y="118" text-anchor="middle"
+            font-size="54"
+            font-family="serif"
+            direction="rtl"
+            unicode-bidi="bidi-override"
+            fill="black">نوراني</text>
+    </svg>
+
+  </div>
+
+  <h1>Nurani Faith</h1>
+  <p class="sub">Online Library</p>
+</header>
+
+<div class="wrap">
+  <div class="grid">
+
+    <!-- LEFT: list -->
+    <div class="panel">
+      <div style="font-weight:700; margin-bottom:10px;">Books</div>
+
+      <div class="books">
+        <button class="book" onclick="openPdf('Mar d-Shlama', 'Mar-d-Shlama-1.pdf')">
+          Mar d-Shlama
+          <span class="small">Mar-d-Shlama-1.pdf</span>
+        </button>
+
+        <button class="book" onclick="openPdf('Awdena Qaddisha', 'Awdena-Qaddisha.pdf')">
+          Awdena Qaddisha
+          <span class="small">Awdena-Qaddisha.pdf</span>
+        </button>
+
+        <button class="book" onclick="openPdf('Jawahir (Parts 1–2)', 'Jawahir%201-2.pdf')">
+          Jawahir (Parts 1–2)
+          <span class="small">Jawahir 1-2.pdf</span>
+        </button>
+
+        <button class="book" onclick="openPdf('Jawahir (Part 3)', 'Jawahir%203.pdf')">
+          Jawahir (Part 3)
+          <span class="small">Jawahir 3.pdf</span>
+        </button>
+
+        <button class="book" onclick="openPdf('Jawahir (Parts 4–8)', 'Jawahir%204-8.pdf')">
+          Jawahir (Parts 4–8)
+          <span class="small">Jawahir 4-8.pdf</span>
+        </button>
+
+        <button class="book" onclick="openPdf('Luhin', 'Luhin.pdf')">
+          Luhin
+          <span class="small">Luhin.pdf</span>
+        </button>
+      </div>
+
+      <div class="footer">
+        Tip: If a file name changes in the repo, update it here exactly (including spaces).
+      </div>
+    </div>
+
+    <!-- RIGHT: viewer -->
+    <div class="panel">
+      <div class="viewerHeader">
+        <div class="viewerTitle" id="viewerTitle">Select a book to read</div>
+        <div class="hint">Opens in embedded viewer (no auto-download)</div>
+      </div>
+
+      <iframe id="pdfFrame" title="PDF Reader" src=""></iframe>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  function openPdf(title, file) {
+    // If the file contains spaces, use %20 in the string (as done for Jawahir parts above).
+    // Add #toolbar=0 to reduce download UI in some browsers (not guaranteed everywhere).
+    const url = file + '#toolbar=0&navpanes=0&scrollbar=1';
+    document.getElementById('viewerTitle').textContent = title;
+    document.getElementById('pdfFrame').src = url;
+    window.scrollTo({ top: document.querySelector('.wrap').offsetTop - 10, behavior: 'smooth' });
+  }
+</script>
+
+</body>
+  </html>
